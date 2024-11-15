@@ -1,0 +1,12 @@
+.header {
+  padding: 1rem 2rem;
+}
+
+.header h1 {
+  color: tomato;
+}
+
+.header li a {
+  color: lightgray;
+  text-decoration: underline;
+}

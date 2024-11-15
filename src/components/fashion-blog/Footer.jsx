@@ -1,4 +1,5 @@
 import Nav from './Nav';
+import classes from './Footer.module.css';
 
 export default function Footer() {
   const navs = [
@@ -37,9 +38,9 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="footer">
+    <footer className={classes.footer}>
       <Nav navs={navs} />
-      <p className="copy">&copy; 2013 Valet Industries, Inc</p>
+      <p className={classes.copy}>&copy; 2013 Valet Industries, Inc</p>
     </footer>
   );
 }

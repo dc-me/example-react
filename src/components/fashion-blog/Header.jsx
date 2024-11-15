@@ -1,4 +1,5 @@
 import Nav from './Nav.jsx';
+import classes from './Header.module.css';
 
 export default function Header() {
   const navs = [
@@ -28,7 +29,7 @@ export default function Header() {
     },
   ];
   return (
-    <header className="header">
+    <header className={classes.header}>
       <h1>Sartre's List</h1>
       <h2>Better-Dressed People</h2>
       <Nav navs={navs} />
