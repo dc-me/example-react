@@ -1,0 +1,17 @@
+.news-page {
+  padding: 0 2rem;
+}
+
+.news-page form {
+  text-align: center;
+}
+
+.page-title {
+  text-align: center;
+}
+
+.news-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+}
