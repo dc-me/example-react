@@ -1,8 +1,8 @@
-import { useState } from 'react';
+import { useState } from "react";
 
 export default function MovieSearchBar({ onSearch }) {
   const [form, setForm] = useState({
-    t: '',
+    t: "",
   });
 
   const handleSubmit = (e) => {
@@ -11,7 +11,6 @@ export default function MovieSearchBar({ onSearch }) {
   };
 
   const handleChange = (e) => {
-    console.log(e.target.value);
     setForm({
       ...form,
       [e.target.name]: e.target.value,
@@ -19,11 +18,19 @@ export default function MovieSearchBar({ onSearch }) {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <input type="text" name="t" value={form.t} onChange={handleChange} />
-        <input type="submit" value="submit" />
-      </form>
-    </div>
+    <form className="flex gap-2" onSubmit={handleSubmit}>
+      <input
+        className="grow rounded-md border px-3 py-2 focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500"
+        type="text"
+        name="t"
+        value={form.t}
+        onChange={handleChange}
+      />
+      <input
+        className="rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700"
+        type="submit"
+        value="submit"
+      />
+    </form>
   );
 }

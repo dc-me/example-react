@@ -1,8 +1,7 @@
-import { useEffect, useState } from 'react';
-import MovieSearchBar from './MovieSearchBar';
-import MovieDisplay from './MovieDisplay';
-import { getMovie } from '../../lib/movie';
-import classes from './index.module.css';
+import { useEffect, useState } from "react";
+import MovieSearchBar from "./MovieSearchBar";
+import MovieDisplay from "./MovieDisplay";
+import { getMovie } from "../../lib/movie";
 
 export default function Movie() {
   const [movie, setMovie] = useState(null);
@@ -12,14 +11,13 @@ export default function Movie() {
   };
 
   useEffect(() => {
-    console.log('useEffect');
-    getMovie('Clueless').then(setMovie);
+    getMovie("Clueless").then(setMovie);
   }, []);
 
   return (
-    <>
+    <div className="min-h-full max-w-lg p-4">
       <MovieSearchBar onSearch={handleSearchMovie} />
       <MovieDisplay movie={movie} />
-    </>
+    </div>
   );
 }
