@@ -67,6 +67,7 @@ export default function LoginPage() {
           <TextField
             fullWidth
             type="email"
+            className="mt-4"
             error={errors.email}
             {...register("email", {
               required: "Email is required",
@@ -79,6 +80,7 @@ export default function LoginPage() {
             fullWidth
             label="Password:"
             type="password"
+            className="mt-4"
             error={errors.password}
             placeholder="plase enter you password here"
             {...register("password", {
