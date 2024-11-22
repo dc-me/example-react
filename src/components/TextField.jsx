@@ -2,7 +2,15 @@ import classNames from "classnames";
 import { forwardRef } from "react";
 
 export default forwardRef(function TextField(
-  { error, label, fullWidth, placeholder, helperText, ...inputProps },
+  {
+    error,
+    label,
+    fullWidth = true,
+    className,
+    placeholder,
+    helperText,
+    ...inputProps
+  },
   ref,
 ) {
   const inputClasses = classNames(
@@ -12,7 +20,7 @@ export default forwardRef(function TextField(
   );
 
   return (
-    <div className="mt-4">
+    <div className={className}>
       <label
         htmlFor={inputProps.name}
         className="mb-2 inline-block text-sm font-medium"
