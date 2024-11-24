@@ -1,12 +1,15 @@
+import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import TextField from "../TextField";
 import Button from "../Button";
 import preventDefault from "../../lib/utils";
 import { emailPattern } from "../../lib/regexes";
+import { saveUser, signup } from "../../lib/users";
 
 export default function RegisterPage() {
   const {
     watch,
+    reset,
     register,
     setError,
     handleSubmit,
@@ -14,9 +17,25 @@ export default function RegisterPage() {
   } = useForm();
 
   const password = watch("password");
+  const navigate = useNavigate();
 
-  const submit = (formData) => {
-    console.log(formData);
+  const submit = async (formData) => {
+    try {
+      const user = await signup(formData);
+      saveUser(user);
+      navigate("/users/chat");
+    } catch (err) {
+      let message = "Unknow Error!";
+      if (err.response) {
+        message = err.response.data.message;
+      } else {
+        message = err.message;
+      }
+      setError("submit", {
+        type: "signup",
+        message: message,
+      });
+    }
   };
 
   return (
@@ -28,6 +47,11 @@ export default function RegisterPage() {
             This information will be displayed publicly so be careful what you
             share.
           </p>
+          {errors.submit && (
+            <p className="mt-4 text-lg font-bold text-red">
+              {errors.submit.message}
+            </p>
+          )}
         </div>
         <form
           onSubmit={handleSubmit(submit)}
@@ -91,7 +115,12 @@ export default function RegisterPage() {
             />
           </div>
           <div className="mt-10 flex justify-end gap-4 border-t border-gray-300 p-4">
-            <Button type="button" className="rounded-lg" variant="contained">
+            <Button
+              type="button"
+              onClick={() => reset()}
+              className="rounded-lg"
+              variant="contained"
+            >
               Reset
             </Button>
             <Button className="rounded-lg" variant="contained">
