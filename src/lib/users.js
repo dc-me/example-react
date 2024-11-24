@@ -6,6 +6,16 @@ export async function login(formData) {
   return data;
 }
 
+export async function signup(formData, autoLogin = true) {
+  let url = "/v2/users";
+  if (autoLogin) {
+    url += "?autoLogin=true";
+  }
+  const res = await axios.post(url, formData);
+  const data = res.data;
+  return data;
+}
+
 export function getUser() {
   let user = null;
   try {
